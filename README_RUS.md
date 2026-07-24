@@ -104,31 +104,33 @@
 
 ![Correlation Matrix](visualizations/1_correlation_matrix.png)
 
-The correlation matrix reveals strong correlation between CPU core count, GPU core count, memory bandwidth, and maximum supported displays. NPU TOPS is the notable exception, showing weak correlation with the other variables.
+Полученная матрица показывает высокую корреляцию между количеством ядер центрального процессора, количеством ядер графического процессора, пропускной способностью памяти и максимальным количеством поддерживаемых дисплеев. Производительность нейронного вроцессора (TOPS) является заметным исключением, демонстрируя слабую связь с другими переменными.
 
-This pattern reflects Apple's chip scaling architecture. With each tier, from the A-series through the M-series' base, Pro, Max and Ultra tiers, CPU cores, GPU cores, memory bandwidth, and display support all increase in tandem, but NPU TOPS, remain constant from the A-series through the M-series Max tier, as Apple equips all of these chips with an NPU of identical core count. The sole exception occurs at the Ultra tier, where NPU TOPS double. However, this is a structural artifact rather than genuine scaling, since Ultra chips are constructed by fusing two Max chips together.
-
-Матрица корреляций показывает сильную корреляцию между количеством ядер центрального процессора, количеством ядер графического процессора, пропускной способностью памяти и максимальным количеством поддерживаемых дисплеев. Производительность нейронного вроцессора (TOPS) является заметным исключением, демонстрируя слабую корреляцию с другими переменными.
-
-Эта закономерность отражает масштабирование чипов Apple. С каждым уровнем, от серии A до процессоров серии M базового, Pro, Max и Ultra уровней, количество ядер центрального процессора, ядер графического процессора, пропускная способность памяти и поддержка дисплеев увеличиваются синхронно, но производительность нейронного вроцессора (TOPS) остаются постоянной от серии A до уровня Max серии M, поскольку Apple оснащает все эти чипы нейронными процессорами (NPU) с одинаковым количеством ядер. Единственное исключение наблюдается на уровне Ultra, где производительность NPU удваивается. Однако это скорее структурное масштабирование, поскольку чипы Ultra создаются путем объединения двух чипов Max.
+Эта закономерность отражает масштабирование чипов Apple. С каждым уровнем, от серии A до процессоров серии M базового, Pro, Max и Ultra уровней, количество ядер центрального процессора, ядер графического процессора, пропускная способность памяти и поддержка дисплеев увеличиваются синхронно, но производительность нейронного вроцессора (TOPS) остаётся постоянной от серии A до уровня Max серии M, поскольку Apple оснащает все эти чипы нейронными процессорами (NPU) с одинаковым количеством ядер. Единственное исключение наблюдается на уровне Ultra, где производительность NPU удваивается. Однако это скорее структурное масштабирование, поскольку чипы Ultra создаются путём объединения двух чипов Max.
 
 ---
 
-### Все вариации оснащения процессоров по каждому полокению
+### Все конфигурационные профили процессоров по каждому полокению
 
 ![All Hardware Specifications](visualizations/2_1_specs_all.png)
 
-Each generation includes four chip models, with the exception of M5, which currently comprises only three, since the M5 generation is still in progress: no Ultra variant has been announced yet, and the A19 Pro has not been used in Mac hardware. Among prior generations, all followed a consistent pattern of four models and eight configurations, except M1, which had nine (two per tier, except Pro, which had three).
+Каждое поколение включает по 4 модели чипов, за исключением M5, на данный момент состоящего из трёх, так как оно является текущим (анонса чипа уровня Ultra не было, обновления MacBook Neo до чипа A19 Pro – тоже). Предыдущие поколения включали в себя по четыре типа чипа и 8 вариаций чипов, за исключением M1, где было 9 вариаций чипов из-за трёх вариаций M1 Pro.
 
-Despite having the most chip variants, M1 generation did not yield the highest number of specification profiles, as its memory options were limited even though its storage options were comparatively broad. M2, by contrast, produced the highest specification count, due to the introduction of more memory options.
+Несмотря на наибольшее количество вариаций за ним, поколение M1 не произвёл наибольшее количество конфигурационных профилей, так как размах его опций объединённой (оперативной) памяти был узок, при том, что размах накопителей были относительно широк. Поколение M2, в противопоставление, произвело наибольшее количество конфигурационных профилей, так как привнесло больше вариантов объединённой памяти.
 
 M4 shows a further reduction in specification profiles: the A18 Pro offers only one memory option and two storage options, and the base M4 no longer includes an 8GB memory tier, starting instead at 16GB. Although the M5 generation's Mac rollout is incomplete, it is already evident that it will produce fewer specification profiles overall, since the 256GB storage tier has been dropped entirely, compounding the earlier removal of the 8GB memory option in M4.
+
+В линейке M4 наблюдается дальнейшее сокращение количества конфигурационных профилей: A18 Pro подразумевает только один вариант объединённой памяти и два варианта хранилища, а базовая версия M4 больше не включает 8 ГБ объединённой памяти, вместо этого она начинается с 16 ГБ. Хотя выпуск Mac поколения M5 ещё не завершён, уже очевидно, что в целом количество вариантов комплектации есть и будет меньше, поскольку вариант с 256 ГБ хранилища полностью исключён, что примножает эффект от отменённого ранее варианта с 8 ГБ оперативной памяти в поколении M4.
 
 ---
 
 ![Hardware Specifications for Base, Pro, Max](visualizations/2_2_specs_base_pro_max.png)
 
-Restricting the comparison to Base, Pro, and Max tiers reveals a more consistent pattern across generations. M2, M3, and M5 each show six configurations, corresponding to two variants per tier (Base, Pro, Max). M1 and M4 stand out as outliers, each showing an additional configuration: M1 Pro had three variants, while M4 as a whole had seven configurations rather than six.
+Если ограничить сравнение только базовыми, Pro и Max версиями, то можно выявить более устойчивую закономерность среди поколений. M2, M3 и M5 имеют по шесть конфигураций, что соответствует двум вариантам для каждой версии (базовая, Pro, Max). M1 и M4 выделяются как исключения, каждая из них имеет дополнительную конфигурацию: у M1 Pro и у базового M4 было по три варианта – выборка не очень большая, но закономерность желания Apple придерживаться 2 вариантов на каждую модель чипа намечается (одна полноценная версия, одна – урезанная/отбракованная).
+
+Что интересно, именно причины, почему именно M1 Pro и M4 стали жертвами такого отбраковывания, не особо очевидно выделяются, поскольку M1 Pro доступен только в MacBook Pro 2021 года, а M4 – в более широком наборе устройств: MacBook Pro 14", MacBook Air, iPad Pro, iPad Air, iMac, Mac mini (к тому же, если учитывать версии M4 для iPad Pro и iPad Air, то мы получаем 5 вариаций чипов M4, но, к сожалению, это не входит в охват данного кейса).
+
+Исходя из всего этого и временнóго контекста, я могу лишь предположить, что у M1 Pro было 3 варианта, поскольку это был следующий после M1 по временным рамкам и по сложности производства чип и поэтому было отбраковано много чипов, а у M4 было много вариантов просто потому что он построен на более экономически эффективном техпроцессе, чем M3, и Apple решили произвести его в бóльшем объёме (также далее в одной из последующих схем будет отображено, что между выходом M4 и M5 был самый длинный промежуток на данный момент между поколениями), поэтому и бóльшее количество вариантов отбракованных чипов. Но это всё лишь спекуляции, которые я не могу обсолютно точно подтвердить без конкретных данных (на данный момент).
 
 ---
 
