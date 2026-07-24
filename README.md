@@ -126,7 +126,11 @@ M4 shows a further reduction in specification profiles: the A18 Pro offers only 
 
 ![Hardware Specifications for Base, Pro, Max](visualizations/2_2_specs_base_pro_max.png)
 
-Restricting the comparison to Base, Pro, and Max tiers reveals a more consistent pattern across generations. M2, M3, and M5 each show six configurations, corresponding to two variants per tier (Base, Pro, Max). M1 and M4 stand out as outliers, each showing an additional configuration: M1 Pro had three variants, while M4 as a whole had seven configurations rather than six.
+Restricting the comparison to base, Pro, and Max tiers reveals a more consistent pattern across generations. M2, M3, and M5 each show six configurations, corresponding to two variants per tier (base, Pro, Max). M1 and M4 stand out as outliers, each showing an additional configuration: M1 Pro and the base M4 each had three variants — the sample size isn't very large, but there's a pattern to Apple's desire to stick to two variants for each chip model (unbinned and binned).
+
+Interestingly, the exact reasons to why M1 Pro and M4 were targeted for this binning aren't particularly clear, as the M1 Pro was only available in the 2021 MacBook Pro, while the M4 is available in a wider range of devices: the 14" MacBook Pro, MacBook Air, iPad Pro, iPad Air, iMac, and Mac mini (plus, if you include the iPad Pro and iPad Air versions of the M4, there are 5 variations of the M4 chip, which is unfortunately beyond the scope of this case study).
+
+Based on all of this and the timeline, I can only speculate that the M1 Pro had three variants because it was the next chip after the M1 in terms of timeline and manufacturing complexity, and therefore many chips were binned. The M4 had many variants simply because it was built using a more cost-effective node than the M3, and Apple decided to produce it in higher volumes (also, in one of the following plots, it will be shown that the gap between the M4 and M5 generations was the longest to date), hence the higher number of binned variants. But this is all just speculation, which I cannot confirm with absolute certainty without concrete data (currently).
 
 ---
 
