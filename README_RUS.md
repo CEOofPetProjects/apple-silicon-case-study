@@ -38,7 +38,7 @@
 | Имя атрибута | Тип данных | Описание и контекст предметной области | Источник |
 | :--- | :--- | :--- | :--- |
 | `family_id` | `INTEGER` | **PK** Первичный ключ для семейства чипов | — |
-| `family_name` | `TEXT` | Generation family identifier (M1 to M5) | Страница сравнения моделей Mac на сайте Apple |
+| `family_name` | `TEXT` | Generation family identifier (от M1 до M5) | Страница сравнения моделей Mac на сайте Apple |
 | `family_node` | `TEXT` | Техпроцесс TSMC в нанометрах (*например, 3 нм, 5 нм*) | TechInsights, презентации Apple |
 
 ---
