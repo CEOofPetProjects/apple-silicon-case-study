@@ -30,77 +30,77 @@
 <details>
 <summary><b>Нажмите, чтобы раскрыть словарь данных</b></summary>
 
-### Data dictionary
+### Словарь данных
 
 #### `chip_families`
-*High-level architectural generations and manufacturing process nodes*
+*Семейства (поколения) чипов и используемые техпроцессы*
 
-| Attribute Name | Data Type | Description & Domain Context | Source |
+| Имя атрибута | Тип данных | Описание и контекст предметной области | Источник |
 | :--- | :--- | :--- | :--- |
-| `family_id` | `INTEGER` | **PK** Primary key for the architecture generation | — |
-| `family_name` | `TEXT` | Generation family identifier (M1 to M5) | "Compare Mac models" page on Apple website |
-| `family_node` | `TEXT` | TSMC semiconductor fabrication node in nanometers (*e.g., 3nm, 5nm*) | TechInsights, Apple Keynotes |
+| `family_id` | `INTEGER` | **PK** Первичный ключ для семейства чипов | — |
+| `family_name` | `TEXT` | Generation family identifier (M1 to M5) | Страница сравнения моделей Mac на сайте Apple |
+| `family_node` | `TEXT` | Техпроцесс TSMC в нанометрах (*например, 3 нм, 5 нм*) | TechInsights, презентации Apple |
 
 ---
 
 #### `chips`
-*Commercial System-on-Chip (SoC) models linked to their parent family*
+*Коммерческие модели систем на чипе (SoC)*
 
-| Attribute Name | Data Type | Description & Domain Context | Source |
+| Имя атрибута | Тип данных | Описание и контекст предметной области | Источник |
 | :--- | :--- | :--- | :--- |
-| `chip_id` | `INTEGER` | **PK** Primary key for the specific System-on-Chip (SoC) | — |
-| `family_id` | `INTEGER` | **FK** Links SoC to parent generation in `chip_families` | — |
-| `chip_name` | `TEXT` | Commercial model name (*e.g., M1 Pro, M2 Max, M3 Ultra*) | "Compare Mac models" page on Apple website |
-| `chip_announcement_date` | `DATE` | Date of announcement (`YYYY-MM-DD`) | Apple Newsroom press releases |
+| `chip_id` | `INTEGER` | **PK** Первичный ключ для конкретного чипа | — |
+| `family_id` | `INTEGER` | **FK** Соединяет чип с семейством/поколением из `chip_families` | — |
+| `chip_name` | `TEXT` | Коммерческое название чипа (*например, M1, M2 Pro, M3 Max*) | Страница сравнения моделей Mac на сайте Apple |
+| `chip_announcement_date` | `DATE` | Дата презентации (`YYYY-MM-DD`) | Пресс-релизы Apple Newsroom |
 
 ---
 
 #### `chip_configs`
-*Hardware binnings, core distributions, and compute specs per SoC configuration*
+*Вариации чипов, распределение ядер, вычислительные характеристики конфигурации каждого чипа*
 
-| Attribute Name | Data Type | Description & Domain Context | Source |
+| Имя атрибута | Тип данных | Описание и контекст предметной области | Источник |
 | :--- | :--- | :--- | :--- |
-| `config_id` | `INTEGER` | **PK** Primary surrogate key for hardware tier configurations | — |
-| `chip_id` | `INTEGER` | **FK** Links configuration to target SoC in `chips` | — |
-| `chip_cpu_cores` | `INTEGER` | Total physical CPU core count | "Compare Mac models" page on Apple website |
-| `chip_perf_cores` | `INTEGER` | CPU Performance core count | "Compare Mac models" page on Apple website |
-| `chip_eff_cores` | `INTEGER` | CPU Efficiency core count | "Compare Mac models" page on Apple website |
-| `chip_super_cores` | `INTEGER` | CPU Super core count (*introduced in M5*) | "Compare Mac models" page on Apple website |
-| `chip_gpu_cores` | `INTEGER` | Integrated graphics GPU core count | "Compare Mac models" page on Apple website |
-| `chip_npu_cores` | `INTEGER` | Neural Engine physical core count | "Compare Mac models" page on Apple website |
-| `chip_npu_tops` | `REAL` | AI compute throughput rating in TOPS | Apple Press Releases / Keynotes |
-| `chip_mem_type` | `TEXT` | Memory technology standard (*e.g., LPDDR5, LPDDR5X*) | Wikipedia |
-| `chip_mem_speed` | `INTEGER` | Memory bus clock frequency measured in Megahertz (MHz) | Wikipedia |
-| `chip_mem_bw` | `REAL` | Peak memory bandwidth throughput in GB/s | "Compare Mac models" page on Apple website |
-| `chip_max_displays` | `INTEGER` | Maximum external monitors natively supported | Apple Support website |
+| `config_id` | `INTEGER` | **PK** Первичный ключ для конкретной вариации чипа | — |
+| `chip_id` | `INTEGER` | **FK** Соединяет конкретную вариацию чипа с его общим коммерческим названием из `chips` | — |
+| `chip_cpu_cores` | `INTEGER` | Общее кол-во ядер CPU | Страница сравнения моделей Mac на сайте Apple |
+| `chip_perf_cores` | `INTEGER` | Кол-во производительных ядер CPU | Страница сравнения моделей Mac на сайте Apple |
+| `chip_eff_cores` | `INTEGER` | Кол-во энергоэффективных ядер CPU | Страница сравнения моделей Mac на сайте Apple |
+| `chip_super_cores` | `INTEGER` | Кол-во супер-ядер CPU (*появились в M5*) | Страница сравнения моделей Mac на сайте Apple |
+| `chip_gpu_cores` | `INTEGER` | Количество ядер графического процессора | Страница сравнения моделей Mac на сайте Apple |
+| `chip_npu_cores` | `INTEGER` | Количество ядер нейронного процессора | Страница сравнения моделей Mac на сайте Apple |
+| `chip_npu_tops` | `REAL` | Производительность нейронного процессора в TOPS | Пресс-релизы и презентации Apple |
+| `chip_mem_type` | `TEXT` | Тип памяти (*например, LPDDR5, LPDDR5X*) | Википедия |
+| `chip_mem_speed` | `INTEGER` | Тактовая частота памяти в мегагерцах (МГц) | Википедия |
+| `chip_mem_bw` | `REAL` | Пиковая пропускная способность памяти в ГБ/с | Страница сравнения моделей Mac на сайте Apple |
+| `chip_max_displays` | `INTEGER` | Максимально поддерживаемое количество подключаемых дисплеев | Сайт поддержки Apple |
 
 ---
 
 #### `chip_memory_options`
-*Supported RAM capacities per hardware binning*
+*Поддерживаемые объёмы оперативной памяти в зависимости от аппаратной классификации*
 
-| Attribute Name | Data Type | Description & Domain Context | Source |
+| Имя атрибута | Тип данных | Описание и контекст предметной области | Источник |
 | :--- | :--- | :--- | :--- |
-| `mem_option_id` | `INTEGER` | **PK** Primary key for memory capacity mapping | — |
-| `config_id` | `INTEGER` | **FK** Links memory option to configuration in `chip_configs` | — |
-| `memory_size_gb` | `INTEGER` | Supported memory capacity in Gigabytes (GB) | "Compare Mac models" page on Apple website |
+| `mem_option_id` | `INTEGER` | **PK** Первичный ключ по конфигурации памяти | — |
+| `config_id` | `INTEGER` | **FK** Связывает параметр памяти с конфигурацией в `chip_configs` | — |
+| `memory_size_gb` | `INTEGER` | Поддерживаемый объём памяти в гигабайтах (ГБ) | Страница сравнения моделей Mac на сайте Apple |
 
 ---
 
 #### `chip_storage_options`
-*Supported SSD storage capacities per hardware binning*
+*Поддерживаемые объёмы накопителей в зависимости от аппаратной классификации*
 
-| Attribute Name | Data Type | Description & Domain Context | Source |
+| Имя атрибута | Тип данных | Описание и контекст предметной области | Источник |
 | :--- | :--- | :--- | :--- |
-| `storage_option_id` | `INTEGER` | **PK** Primary key for storage capacity mapping | — |
-| `config_id` | `INTEGER` | **FK** Links storage option to configuration in `chip_configs` | — |
-| `storage_size_gb` | `INTEGER` | Supported storage capacity in Gigabytes (GB) | "Compare Mac models" page on Apple website |
+| `storage_option_id` | `INTEGER` | **PK** Первичный ключ по конфигурации накопителей | — |
+| `config_id` | `INTEGER` | **FK** Связывает параметр накопителей с конфигурацией в `chip_configs` | — |
+| `storage_size_gb` | `INTEGER` | Поддерживаемый объём накопителей в гигабайтах (ГБ) | Страница сравнения моделей Mac на сайте Apple |
 
 </details>
 
-## Analysis
+## Анализ
 
-### Correlarion matrix
+### Матрица корреляций
 
 ![Correlation Matrix](visualizations/1_correlation_matrix.png)
 
@@ -108,9 +108,13 @@ The correlation matrix reveals strong correlation between CPU core count, GPU co
 
 This pattern reflects Apple's chip scaling architecture. With each tier, from the A-series through the M-series' base, Pro, Max and Ultra tiers, CPU cores, GPU cores, memory bandwidth, and display support all increase in tandem, but NPU TOPS, remain constant from the A-series through the M-series Max tier, as Apple equips all of these chips with an NPU of identical core count. The sole exception occurs at the Ultra tier, where NPU TOPS double. However, this is a structural artifact rather than genuine scaling, since Ultra chips are constructed by fusing two Max chips together.
 
+Матрица корреляций показывает сильную корреляцию между количеством ядер центрального процессора, количеством ядер графического процессора, пропускной способностью памяти и максимальным количеством поддерживаемых дисплеев. Производительность нейронного вроцессора (TOPS) является заметным исключением, демонстрируя слабую корреляцию с другими переменными.
+
+Эта закономерность отражает масштабирование чипов Apple. С каждым уровнем, от серии A до процессоров серии M базового, Pro, Max и Ultra уровней, количество ядер центрального процессора, ядер графического процессора, пропускная способность памяти и поддержка дисплеев увеличиваются синхронно, но производительность нейронного вроцессора (TOPS) остаются постоянной от серии A до уровня Max серии M, поскольку Apple оснащает все эти чипы нейронными процессорами (NPU) с одинаковым количеством ядер. Единственное исключение наблюдается на уровне Ultra, где производительность NPU удваивается. Однако это скорее структурное масштабирование, поскольку чипы Ultra создаются путем объединения двух чипов Max.
+
 ---
 
-### Total hardware specification profiles in each generation
+### Все вариации оснащения процессоров по каждому полокению
 
 ![All Hardware Specifications](visualizations/2_1_specs_all.png)
 
@@ -146,7 +150,7 @@ The M5 generation marks a clear shift: the base tier now starts at 512GB (droppi
 
 ___
 
-### Timeline of Apple Silicon generation rollouts
+### Хронология релизов поколений процессоров Apple Silicon
 
 ![Rollout Timeline](visualizations/3_rollout_timeline.png)
 
@@ -158,7 +162,7 @@ While the M5 cycle is still ongoing and cannot be fully assessed, it already sho
 
 ---
 
-### Neural Engine performance across generations
+### Производительность нейронных процессоров по поколениям
 
 ![NPU Performance Scaling](visualizations/4_npu_tops.png)
 
@@ -170,7 +174,7 @@ Notably, the Ultra tier's advantage has narrowed considerably: M3 Ultra's perfor
 
 ---
 
-### Memory bandwidth scaling across chip tiers and generations
+### Масштабирование пропускной способности памяти в зависимости от уровня и поколения чипов
 
 ![Memory Bandwidth Scaling](visualizations/5_bandwidth.png)
 
@@ -186,7 +190,7 @@ Taken together, this trajectory suggests an inevitable reshuffling of the tier h
 
 ---
 
-## Final thoughts
+## Выводы
 
 This case study set out to demonstrate a complete data engineering and analytics workflow, from a normalized relational schema through to exploratory analysis, using Apple Silicon's Mac-bound chip lineup as the subject matter. Beyond validating that approach, the analysis surfaced several genuine trends in how Apple's chip strategy has evolved across five generations.
 
