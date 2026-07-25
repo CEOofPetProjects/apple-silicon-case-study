@@ -118,8 +118,6 @@
 
 Несмотря на наибольшее количество вариаций за ним, поколение M1 не произвёл наибольшее количество конфигурационных профилей, так как размах его опций объединённой (оперативной) памяти был узок, при том, что размах накопителей были относительно широк. Поколение M2, в противопоставление, произвело наибольшее количество конфигурационных профилей, так как привнесло больше вариантов объединённой памяти.
 
-M4 shows a further reduction in specification profiles: the A18 Pro offers only one memory option and two storage options, and the base M4 no longer includes an 8GB memory tier, starting instead at 16GB. Although the M5 generation's Mac rollout is incomplete, it is already evident that it will produce fewer specification profiles overall, since the 256GB storage tier has been dropped entirely, compounding the earlier removal of the 8GB memory option in M4.
-
 В линейке M4 наблюдается дальнейшее сокращение количества конфигурационных профилей: A18 Pro подразумевает только один вариант объединённой памяти и два варианта хранилища, а базовая версия M4 больше не включает 8 ГБ объединённой памяти, вместо этого она начинается с 16 ГБ. Хотя выпуск Mac поколения M5 ещё не завершён, уже очевидно, что в целом количество вариантов комплектации есть и будет меньше, поскольку вариант с 256 ГБ хранилища полностью исключён, что примножает эффект от отменённого ранее варианта с 8 ГБ оперативной памяти в поколении M4.
 
 ---
