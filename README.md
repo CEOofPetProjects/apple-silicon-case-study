@@ -7,6 +7,7 @@
 ## Project overview
 
 This case study was developed to demonstrate end-to-end data engineering and analytics capabilities, spanning database planning, ERD modeling, SQL schema implementation, and Python exploratory data analysis (pandas, sqlite3, Matplotlib, Seaborn).
+And I also wanted to showcase Apple Silicon in Macs and share some of my usual ~~speculation~~ analysis.
 
 
 ## Scope and data boundaries
