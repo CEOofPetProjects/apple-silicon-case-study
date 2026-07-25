@@ -6,7 +6,7 @@
 
 ## Project overview
 
-This case study was developed to demonstrate end-to-end data engineering and analytics capabilities, spanning database planning, ERD modeling, SQL schema implementation, and Python exploratory data analysis (pandas, sqlite3, matplotlib, seaborn).
+This case study was developed to demonstrate end-to-end data engineering and analytics capabilities, spanning database planning, ERD modeling, SQL schema implementation, and Python exploratory data analysis (pandas, sqlite3, Matplotlib, Seaborn).
 
 
 ## Scope and data boundaries
