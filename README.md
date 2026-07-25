@@ -35,51 +35,51 @@ To eliminate redundancy and maintain Third Normal Form (3NF), the dataset is str
 ### Data dictionary
 
 #### `chip_families`
-*High-level architectural generations and manufacturing process nodes*
+*Chip families/generations and the manufacturing nodes used*
 
 | Attribute Name | Data Type | Description & Domain Context | Source |
 | :--- | :--- | :--- | :--- |
 | `family_id` | `INTEGER` | **PK** Primary key for the architecture generation | — |
-| `family_name` | `TEXT` | Generation family identifier (M1 to M5) | "Compare Mac models" page on Apple website |
+| `family_name` | `TEXT` | Chip generation/family/lineup (M1 to M5) | "Compare Mac models" page on Apple website |
 | `family_node` | `TEXT` | TSMC semiconductor fabrication node in nanometers (*e.g., 3nm, 5nm*) | TechInsights, Apple Keynotes |
 
 ---
 
 #### `chips`
-*Commercial System-on-Chip (SoC) models linked to their parent family*
+*Chip models in general*
 
 | Attribute Name | Data Type | Description & Domain Context | Source |
 | :--- | :--- | :--- | :--- |
 | `chip_id` | `INTEGER` | **PK** Primary key for the specific System-on-Chip (SoC) | — |
 | `family_id` | `INTEGER` | **FK** Links SoC to parent generation in `chip_families` | — |
 | `chip_name` | `TEXT` | Commercial model name (*e.g., M1 Pro, M2 Max, M3 Ultra*) | "Compare Mac models" page on Apple website |
-| `chip_announcement_date` | `DATE` | Date of announcement (`YYYY-MM-DD`) | Apple Newsroom press releases |
+| `chip_announcement_date` | `DATE` | Date of announcement (`YYYY-MM-DD`) | Apple press releases |
 
 ---
 
 #### `chip_configs`
-*Hardware binnings, core distributions, and compute specs per SoC configuration*
+*Hardware binnings, core distributions, and compute specs per chip configuration*
 
 | Attribute Name | Data Type | Description & Domain Context | Source |
 | :--- | :--- | :--- | :--- |
 | `config_id` | `INTEGER` | **PK** Primary surrogate key for hardware tier configurations | — |
-| `chip_id` | `INTEGER` | **FK** Links configuration to target SoC in `chips` | — |
-| `chip_cpu_cores` | `INTEGER` | Total physical CPU core count | "Compare Mac models" page on Apple website |
-| `chip_perf_cores` | `INTEGER` | CPU Performance core count | "Compare Mac models" page on Apple website |
-| `chip_eff_cores` | `INTEGER` | CPU Efficiency core count | "Compare Mac models" page on Apple website |
-| `chip_super_cores` | `INTEGER` | CPU Super core count (*introduced in M5*) | "Compare Mac models" page on Apple website |
-| `chip_gpu_cores` | `INTEGER` | Integrated graphics GPU core count | "Compare Mac models" page on Apple website |
-| `chip_npu_cores` | `INTEGER` | Neural Engine physical core count | "Compare Mac models" page on Apple website |
-| `chip_npu_tops` | `REAL` | AI compute throughput rating in TOPS | Apple Press Releases / Keynotes |
+| `chip_id` | `INTEGER` | **FK** Links configuration to target chip in `chips` | — |
+| `chip_cpu_cores` | `INTEGER` | Total CPU core count | "Compare Mac models" page on Apple website |
+| `chip_perf_cores` | `INTEGER` | CPU Performance cores count | "Compare Mac models" page on Apple website |
+| `chip_eff_cores` | `INTEGER` | CPU Efficiency cores count | "Compare Mac models" page on Apple website |
+| `chip_super_cores` | `INTEGER` | CPU Super cores count (*introduced in M5*) | "Compare Mac models" page on Apple website |
+| `chip_gpu_cores` | `INTEGER` | GPU core count | "Compare Mac models" page on Apple website |
+| `chip_npu_cores` | `INTEGER` | NPU core count | "Compare Mac models" page on Apple website |
+| `chip_npu_tops` | `REAL` | NPU performance rating in TOPS | Apple press releases and keynotes |
 | `chip_mem_type` | `TEXT` | Memory technology standard (*e.g., LPDDR5, LPDDR5X*) | Wikipedia |
 | `chip_mem_speed` | `INTEGER` | Memory bus clock frequency measured in Megahertz (MHz) | Wikipedia |
 | `chip_mem_bw` | `REAL` | Peak memory bandwidth throughput in GB/s | "Compare Mac models" page on Apple website |
-| `chip_max_displays` | `INTEGER` | Maximum external monitors natively supported | Apple Support website |
+| `chip_max_displays` | `INTEGER` | Maximum external displays supported | Apple Support website |
 
 ---
 
 #### `chip_memory_options`
-*Supported RAM capacities per hardware binning*
+*Supported memory capacities per chip configuration*
 
 | Attribute Name | Data Type | Description & Domain Context | Source |
 | :--- | :--- | :--- | :--- |
@@ -90,7 +90,7 @@ To eliminate redundancy and maintain Third Normal Form (3NF), the dataset is str
 ---
 
 #### `chip_storage_options`
-*Supported SSD storage capacities per hardware binning*
+*Supported storage capacities per chip configuration*
 
 | Attribute Name | Data Type | Description & Domain Context | Source |
 | :--- | :--- | :--- | :--- |
