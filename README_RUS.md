@@ -134,19 +134,19 @@
 
 ![Memory Specifications](visualizations/2_3_memory.png)
 
-The M1 generation shows a notably even distribution, with each chip tier offering exactly two memory options. This expands with M2, where every tier gains a third option, with the exception of M2 Pro, which remains limited to two. M3 follows the same pattern: M3 Pro again holds at two options, while M3 base and M3 Ultra offer three, and M3 Max stands out with five distinct memory configurations.
+Поколение M1 показывает достаточно равномерное распределение, при этом каждый уровень чипов предлагает ровно два варианта памяти. С поколением M2 каждый уровень получает три варианта, за исключением M2 Pro. M3 следует той же схеме: M3 Pro снова предлагает два варианта, в то время как базовый M3 и M3 Ultra предлагают три, а M3 Max выделяется пятью различными конфигурациями памяти.
 
-The Pro tier's limitation is finally resolved with M4 and M5, both of which offer three memory options for Pro. M4 also introduces the A18 Pro to the Mac lineup, though it supports only a single 8GB configuration, a constraint of the chip itself rather than a deliberate design choice.
+Ограниченность уровня Pro наконец-то уходит в поколениях M4 и M5, которые предлагают по три варианта памяти для Pro. В поколении M4 также появился процессор A18 Pro в линейке Mac, хотя он поддерживает только одну конфигурацию – 8 ГБ, что является ограничением самого чипа.
 
 ---
 
 ![Storage Specifications](visualizations/2_4_storage.png)
 
-Storage options were identical across the M1 and M2 generations. Base M1 and M2 chips supported capacities from 256GB to 2TB, while the Pro and Max tiers supported 512GB to 8TB, and Ultra supported 1TB to 8TB.
+Варианты конфигураций объёма памяти были идентичны для поколений M1 и M2: базовые процессоры M1 и M2 поддерживали объем от 256 ГБ до 2 ТБ, в то время как версии Pro и Max поддерживали от 512 ГБ до 8 ТБ, а Ultra — от 1 ТБ до 8 ТБ.
 
-With M3, the Pro tier again receives comparatively limited treatment, capped at a 4TB maximum, while M3 Ultra expands to support up to 16TB; all other tiers remain unchanged. In the M4 generation, Pro storage returns to an 8TB maximum, and the newly introduced A18 Pro supports only 256GB or 512GB.
+В поколении M3 версия Pro и тут не получила широкой вариативности конфигураций, максимальная конфигурация стала ограничена значением в 4 ТБ, в то время как версия M3 Ultra расширяется до 16 ТБ; все остальные версии остались без изменений. В поколении M4 максимальный объём памяти M4 Pro возвращается к 8 ТБ, а A18 Pro поддерживает только 256 ГБ и 512 ГБ.
 
-The M5 generation marks a clear shift: the base tier now starts at 512GB (dropping the 256GB option) and tops out at 4TB, while both Pro and Max drop the 512GB tier entirely, starting instead at 1TB. As a result, M5 represents the most constrained generation yet in terms of storage configuration variety across the Base, Pro, and Max tiers, a change that may be linked to ongoing storage supply shortages.
+Поколение M5 знаменует собой явный сдвиг: базовая версия теперь начинается с 512 ГБ (вариант 256 ГБ полностью исключается в M-серии) и достигает максимума в 4 ТБ, в то время как версии Pro и Max полностью исключают вариант 512 ГБ, начиная с 1 ТБ. В результате, поколение M5 представляет собой наиболее ограниченное по разнообразию конфигураций накопителей в рамках базового, Pro и Max уровней, что может быть связано с текущим дефицитом устройств хранения данных.
 
 ___
 
