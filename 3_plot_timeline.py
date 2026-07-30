@@ -4,6 +4,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+# using month labels for translations
+month_labels = {
+    1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr",
+    5: "May", 6: "Jun", 7: "Jul", 8: "Aug",
+    9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"
+}
+
 db_path = "data/apple_silicon.db"
 conn = sqlite3.connect(db_path)
 sql = """
@@ -42,48 +49,48 @@ fig, ax = plt.subplots(figsize=(12, 6))
 colors = ["#457B9D", "#2A9D8F", "#E76F51", "#1D3557", "#E63946"]
 
 for idx, row in gen_timeline.iterrows():
-  y_pos = idx
-  color = colors[idx % len(colors)]
-  gen_chips = df[df["family_name"] == row["family_name"]].sort_values(
-      "chip_announcement_date"
-  )
+    y_pos = idx
+    color = colors[idx % len(colors)]
+    gen_chips = df[df["family_name"] == row["family_name"]].sort_values(
+        "chip_announcement_date"
+    )
 
-  # drawing horizontal line span
-  ax.plot(
-      [row["first_release"], row["last_release"]],
-      [y_pos, y_pos],
-      color=color,
-      linewidth=4,
-      solid_capstyle="round",
-      zorder=2,
-  )
+    # drawing horizontal line span
+    ax.plot(
+        [row["first_release"], row["last_release"]],
+        [y_pos, y_pos],
+        color=color,
+        linewidth=4,
+        solid_capstyle="round",
+        zorder=2,
+    )
 
-  # drawing individual chip release points
-  ax.scatter(
-      gen_chips["chip_announcement_date"],
-      [y_pos] * len(gen_chips),
-      color=color,
-      s=80,
-      zorder=3,
-      edgecolor="white",
-      linewidth=1.5,
-  )
+    # drawing individual chip release points
+    ax.scatter(
+        gen_chips["chip_announcement_date"],
+        [y_pos] * len(gen_chips),
+        color=color,
+        s=80,
+        zorder=3,
+        edgecolor="white",
+        linewidth=1.5,
+    )
 
-  duration_days = (row["last_release"] - row["first_release"]).days
-  duration_months = round(duration_days / 30.44, 1)
-  start_str = row["first_release"].strftime("%b %Y")
-  end_str = row["last_release"].strftime("%b %Y")
+    duration_days = (row["last_release"] - row["first_release"]).days
+    duration_months = round(duration_days / 30.44, 1)
+    start_str = f"{month_labels[row['first_release'].month]} {row['first_release'].year}"
+    end_str = f"{month_labels[row['last_release'].month]} {row['last_release'].year}"
 
-  ax.text(
-      row["last_release"] + pd.Timedelta(days=25),
-      y_pos,
-      f"{start_str} – {end_str} ({duration_months} mo)",
-      va="center",
-      ha="left",
-      fontsize=10,
-      fontweight="bold",
-      color="#2B2B2B",
-  )
+    ax.text(
+        row["last_release"] + pd.Timedelta(days=25),
+        y_pos,
+        f"{start_str} – {end_str} ({duration_months} mo)",
+        va="center",
+        ha="left",
+        fontsize=10,
+        fontweight="bold",
+        color="#2B2B2B",
+    )
 
 ax.set_yticks(range(len(gen_order)))
 ax.set_yticklabels(gen_order, fontsize=12)
@@ -117,17 +124,17 @@ ax.set_xlim(min_date, max_date)
 ax.set_ylim(-0.5, len(gen_order) - 0.5)
 
 ax.set_title(
-    "Timeline of Apple Silicon Generation Rollouts",
+    "Timeline of Apple Silicon generation rollouts",
     fontsize=14,
     fontweight="bold",
     pad=20,
 )
 ax.set_xlabel(
-    "Announcement Date",
+    "Announcement date",
     fontweight="bold",
     labelpad=10,
 )
-ax.set_ylabel("Apple Silicon Generation", fontweight="bold")
+ax.set_ylabel("Apple Silicon generation", fontweight="bold")
 
 # grid styling
 ax.grid(True, which="major", linestyle="-", alpha=0.8, color="#B0B0B0")
