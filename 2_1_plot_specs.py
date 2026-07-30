@@ -54,11 +54,11 @@ bars = ax1.bar(
     linewidth=1.2,
     alpha=0.85,
     width=0.45,
-    label="Total Specification Profiles",
+    label="Total specification profiles",
 )
 
-ax1.set_xlabel("Apple Silicon Generation", fontweight="bold", labelpad=10)
-ax1.set_ylabel("Total Hardware Specification Profiles", fontweight="bold", color="#333333")
+ax1.set_xlabel("Apple Silicon generation", fontweight="bold", labelpad=10)
+ax1.set_ylabel("Total hardware specification profiles", fontweight="bold", color="#333333")
 ax1.tick_params(axis="y", labelcolor="#333333")
 ax1.set_ylim(0, max(sku_summary["total_skus"]) * 1.25)
 
@@ -73,7 +73,7 @@ line_configs = ax2.plot(
     marker="o",
     linewidth=2.5,
     markersize=7,
-    label="Hardware Binnings (Configurations)",
+    label="Hardware binnings (configurations)",
     zorder=3,
 )
 
@@ -85,12 +85,12 @@ line_chips = ax2.plot(
     linewidth=2.5,
     markersize=7,
     linestyle="--",
-    label="Distinct Chip Models",
+    label="Distinct chip models",
     zorder=3,
 )
 
 ax2.set_ylabel(
-    "Count (Models, Configurations)", fontweight="bold", color="#333333", labelpad=10
+    "Count (models, configurations)", fontweight="bold", color="#333333", labelpad=10
 )
 ax2.tick_params(axis="y", labelcolor="#333333")
 max_secondary = max(
@@ -157,7 +157,7 @@ ax1.legend(
 )
 
 plt.title(
-    "Total Hardware Specification Profiles in Each Apple Silicon Generation",
+    "Total hardware specification profiles in each Apple Silicon generation",
     fontsize=12,
     fontweight="bold",
     pad=15,

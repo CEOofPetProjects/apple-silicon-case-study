@@ -61,16 +61,16 @@ mem_pivot.plot(
 )
 
 ax.set_title(
-    "Distinct Memory Capacities by Chip Tier",
+    "Distinct memory configurations by chip tier",
     fontsize=12,
     fontweight="bold",
     pad=15,
 )
-ax.set_xlabel("Apple Silicon Generation", fontweight="bold", labelpad=10)
-ax.set_ylabel("Distinct Memory Capacities Count", fontweight="bold", labelpad=10)
+ax.set_xlabel("Apple Silicon generation", fontweight="bold", labelpad=10)
+ax.set_ylabel("Distinct memory configurations count", fontweight="bold", labelpad=10)
 ax.tick_params(axis="x", rotation=0)
 ax.yaxis.set_major_locator(ticker.MaxNLocator(integer=True))# forcing y-axis to strictly display whole integers
-ax.legend(title="Chip Tier", frameon=True, facecolor="white", framealpha=0.9)
+ax.legend(title="Chip tier", frameon=True, facecolor="white", framealpha=0.9)
 
 plt.tight_layout()
 plt.savefig("visualizations/2_3_memory.png", dpi=300)

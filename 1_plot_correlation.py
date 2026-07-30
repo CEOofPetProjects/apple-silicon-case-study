@@ -20,11 +20,11 @@ conn.close()
 
 # renaming columns and calculating correlations
 rename_dict = {
-    "chip_cpu_cores": "CPU Cores",
-    "chip_gpu_cores": "GPU Cores",
+    "chip_cpu_cores": "CPU cores",
+    "chip_gpu_cores": "GPU cores",
     "chip_npu_tops": "NPU TOPS",
-    "chip_mem_bw": "Memory Bandwidth",
-    "chip_max_displays": "Max Displays",
+    "chip_mem_bw": "Memory bandwidth",
+    "chip_max_displays": "Max displays",
 }
 df_curated = df.rename(columns=rename_dict)
 corr = df_curated.corr()
@@ -43,13 +43,13 @@ sns.heatmap(
     vmin=0.0,
     square=True,
     linewidths=1.5,
-    cbar_kws={"shrink": 0.8, "label": "Pearson Correlation (r)"},
+    cbar_kws={"shrink": 0.8, "label": "Pearson correlation (r)"},
     ax=ax,
 )
 
 # axis and title formatting
 ax.set_title(
-    "Hardware Correlation Matrix",
+    "C orrelation matrix",
     fontsize=14,
     fontweight="bold",
     pad=20,
