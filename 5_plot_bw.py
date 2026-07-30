@@ -19,16 +19,16 @@ conn.close()
 
 # mapping chips to hardware tiers
 def assign_tier(name):
-  if "A18" in name:
-    return "Mobile (A18 Pro)"
-  elif "Ultra" in name:
-    return "Ultra"
-  elif "Max" in name:
-    return "Max"
-  elif "Pro" in name:
-    return "Pro"
-  else:
-    return "Base"
+    if "A18" in name:
+        return "A-Series"
+    elif "Ultra" in name:
+        return "Ultra"
+    elif "Max" in name:
+        return "Max"
+    elif "Pro" in name:
+        return "Pro"
+    else:
+        return "Base"
 
 df_bw["tier"] = df_bw["chip_name"].apply(assign_tier)
 
@@ -49,9 +49,9 @@ sns.set_theme(style="whitegrid")
 plt.rcParams.update({"font.sans-serif": "DejaVu Sans", "font.size": 11})
 fig, ax = plt.subplots(figsize=(10, 6))
 
-tier_order = ["Mobile (A18 Pro)", "Base", "Pro", "Max", "Ultra"]
+tier_order = ["A-Series", "Base", "Pro", "Max", "Ultra"]
 colors = {
-    "Mobile (A18 Pro)": "#E63946",
+    "A-Series": "#E63946",
     "Base": "#457B9D",
     "Pro": "#2A9D8F",
     "Max": "#E76F51",
@@ -59,41 +59,41 @@ colors = {
 }
 
 for tier in tier_order:
-  subset = bw_trend[bw_trend["tier"] == tier].sort_values("x_pos")
-  if not subset.empty:
-    ax.plot(
-        subset["x_pos"],
-        subset["chip_mem_bw"],
-        marker="o",
-        linewidth=2.5,
-        markersize=8,
-        label=tier,
-        color=colors.get(tier, "black"),
-    )
+    subset = bw_trend[bw_trend["tier"] == tier].sort_values("x_pos")
+    if not subset.empty:
+        ax.plot(
+            subset["x_pos"],
+            subset["chip_mem_bw"],
+            marker="o",
+            linewidth=2.5,
+            markersize=8,
+            label=tier,
+            color=colors.get(tier, "black"),
+        )
     # adding bandwidth numbers above each data point
     for _, row in subset.iterrows():
-      ax.annotate(
-          f"{row['chip_mem_bw']:.0f} GB/s",
-          (row["x_pos"], row["chip_mem_bw"]),
-          textcoords="offset points",
-          xytext=(0, 8),
-          ha="center",
-          fontsize=8,
-      )
+        ax.annotate(
+            f"{row['chip_mem_bw']:.0f} GB/s",
+            (row["x_pos"], row["chip_mem_bw"]),
+            textcoords="offset points",
+            xytext=(0, 8),
+            ha="center",
+            fontsize=8,
+        )
 
 # enforcing correct x-axis labels
 ax.set_xticks(range(len(gen_order)))
 ax.set_xticklabels(gen_order)
 
 ax.set_title(
-    "Memory Bandwidth Scaling",
+    "Memory bandwidth scaling",
     fontsize=13,
     fontweight="bold",
     pad=15,
 )
-ax.set_xlabel("Apple Silicon Generation", fontweight="bold")
-ax.set_ylabel("Memory Bandwidth (GB/s)", fontweight="bold")
-ax.legend(title="Chip Tier", frameon=True)
+ax.set_xlabel("Apple Silicon generation", fontweight="bold")
+ax.set_ylabel("Memory bandwidth (GB/s)", fontweight="bold")
+ax.legend(title="Chip tier", frameon=True)
 ax.grid(True, linestyle="--", alpha=0.6)
 ax.set_ylim(0, 950)
 

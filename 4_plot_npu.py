@@ -20,10 +20,10 @@ conn.close()
 
 # classifying chips by NPU die architecture
 def assign_npu_group(name):
-  if "Ultra" in name:
-    return "Ultra (Dual NPU / 32 Cores)"
-  else:
-    return "Base / Pro / Max / A18 Pro (Single NPU / 16 Cores)"
+    if "Ultra" in name:
+        return "Ultra (Dual NPU / 32 cores)"
+    else:
+        return "Base / Pro / Max / A18 Pro (Single NPU / 16 cores)"
 
 
 df["npu_group"] = df["chip_name"].apply(assign_npu_group)
@@ -46,41 +46,41 @@ plt.rcParams.update({"font.sans-serif": "DejaVu Sans", "font.size": 11})
 fig, ax = plt.subplots(figsize=(10, 6))
 
 groups = [
-    "Base / Pro / Max / A18 Pro (Single NPU / 16 Cores)",
-    "Ultra (Dual NPU / 32 Cores)",
+    "Base / Pro / Max / A18 Pro (Single NPU / 16 cores)",
+    "Ultra (Dual NPU / 32 cores)",
 ]
 colors = {
-    "Base / Pro / Max / A18 Pro (Single NPU / 16 Cores)": "#2A9D8F",
-    "Ultra (Dual NPU / 32 Cores)": "#1D3557",
+    "Base / Pro / Max / A18 Pro (Single NPU / 16 cores)": "#2A9D8F",
+    "Ultra (Dual NPU / 32 cores)": "#1D3557",
 }
 markers = {
-    "Base / Pro / Max / A18 Pro (Single NPU / 16 Cores)": "o",
-    "Ultra (Dual NPU / 32 Cores)": "s",
+    "Base / Pro / Max / A18 Pro (Single NPU / 16 cores)": "o",
+    "Ultra (Dual NPU / 32 cores)": "s",
 }
 
 for group in groups:
-  subset = npu_trend[npu_trend["npu_group"] == group].sort_values("x_pos")
-  if not subset.empty:
-    ax.plot(
-        subset["x_pos"],
-        subset["chip_npu_tops"],
-        marker=markers[group],
-        linewidth=3,
-        markersize=9,
-        label=group,
-        color=colors[group],
-    )
+    subset = npu_trend[npu_trend["npu_group"] == group].sort_values("x_pos")
+    if not subset.empty:
+        ax.plot(
+            subset["x_pos"],
+            subset["chip_npu_tops"],
+            marker=markers[group],
+            linewidth=3,
+            markersize=9,
+            label=group,
+            color=colors[group],
+        )
     # annotating TOPS values directly above data points
     for _, row in subset.iterrows():
-      ax.annotate(
-          f"{row['chip_npu_tops']:.1f} TOPS",
-          (row["x_pos"], row["chip_npu_tops"]),
-          textcoords="offset points",
-          xytext=(0, 10),
-          ha="center",
-          fontsize=9,
-          fontweight="bold",
-      )
+        ax.annotate(
+            f"{row['chip_npu_tops']:.1f} TOPS",
+            (row["x_pos"], row["chip_npu_tops"]),
+            textcoords="offset points",
+            xytext=(0, 10),
+            ha="center",
+            fontsize=9,
+            fontweight="bold",
+        )
 
 # formatting X-axis
 ax.set_xticks(range(len(gen_order)))
@@ -88,16 +88,16 @@ ax.set_xticklabels(gen_order, fontsize=12)
 
 # labels and styling
 ax.set_title(
-    "Neural Engine (NPU) Performance Scaling",
+    "NPU performance scaling",
     fontsize=14,
     fontweight="bold",
     pad=20,
 )
-ax.set_xlabel("Apple Silicon Generation", fontweight="bold", labelpad=10)
+ax.set_xlabel("Apple Silicon generation", fontweight="bold", labelpad=10)
 ax.set_ylabel(
     "Performance in TOPS (Trillion Operations Per Second)", fontweight="bold"
 )
-ax.legend(title="NPU Architecture Tier", frameon=True, loc="upper left")
+ax.legend(title="NPU tier", frameon=True, loc="upper left")
 ax.set_ylim(0, 75)
 ax.grid(True, linestyle="--", alpha=0.6)
 
